@@ -2,7 +2,7 @@
 import chalk  from 'chalk'
 import dedent  from 'dedent-js'
 
-const {bgRed, bgGreen, bgCyan} =chalk
+const {bgRed, bgGreen, bgCyan, bgYellow } =chalk
 
 
 const printError = (err) => {
@@ -32,4 +32,17 @@ const printHelp = () => {
 
 }
 
-export {printError, printSuccess, printHelp}
+const printWeather =(res, icon )=> {
+
+    console.log( 
+        dedent`${bgYellow('WHEATHER')} Weather in city ${res.name}
+         ${icon} ${res.weather[0].description}
+         Temperature: ${res.main.temp} (feels like ${res.main.feels_like})
+         Humidity: ${res.main.humidity}%
+         Wind: ${res.wind.speed}
+         `
+     )
+
+}
+
+export {printError, printSuccess, printHelp, printWeather}
